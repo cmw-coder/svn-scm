@@ -22,10 +22,10 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@3
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@3
         with:
           node-version: '12.17'
 
@@ -38,7 +38,7 @@ jobs:
 
       - name: Cache VSCode binary
         id: cache-vscode
-        uses: actions/cache@v1
+        uses: actions/cache@v3
         with:
           path: .vscode-test
           key: vscode-${{ runner.os }}-${{ matrix.version }}-${{ github.run_id }}
@@ -47,7 +47,7 @@ jobs:
             vscode-${{ runner.os }}-
       
       - name: Run tests
-        uses: GabrielBB/xvfb-action@v1.0
+        uses: GabrielBB/xvfb-action@v1
         with:
           run: yarn test
         env:
@@ -74,10 +74,10 @@ jobs:
 
     steps:
       - name: Clone repository
-        uses: actions/checkout@v1
+        uses: actions/checkout@3
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@3
         with:
           node-version: '12.17'
 
@@ -97,7 +97,7 @@ jobs:
         uses: actions/checkout@v2
 
       - name: Setup Node
-        uses: actions/setup-node@v1
+        uses: actions/setup-node@3
         with:
           node-version: '12.17'
 
@@ -109,7 +109,7 @@ jobs:
         run: npx vsce package -o svn-scm.vsix
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@3
         with:
           name: "svn-scm-${{ github.sha }}.vsix"
           path: "svn-scm.vsix"
@@ -120,7 +120,7 @@ jobs:
           npx vsce package -o svn-scm-ovsx.vsix
 
       - name: Upload open-vsx artifact
-        uses: actions/upload-artifact@v1
+        uses: actions/upload-artifact@3
         with:
           name: "svn-scm-ovsx-${{ github.sha }}.vsix"
           path: "svn-scm-ovsx.vsix"
