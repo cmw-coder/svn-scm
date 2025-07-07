@@ -40,8 +40,8 @@ export class Repository {
   } = {};
   private _info?: ISvnInfo;
 
-  public username?: string;
-  public password?: string;
+  public username?: string = process.env.SVN_USERNAME;
+  public password?: string = process.env.SVN_PASSWORD;
 
   constructor(
     private svn: Svn,
